@@ -1,4 +1,4 @@
-package com.example.unit6_assignment_continente
+package com.example.unit7_assignment_continente
 
 import io.flutter.embedding.android.FlutterActivity
 

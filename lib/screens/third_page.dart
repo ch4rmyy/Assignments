@@ -4,14 +4,14 @@ import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class ThirdPage extends StatefulWidget {
+  const ThirdPage({super.key});
 
   @override
-  HomeScreenState createState() => HomeScreenState();
+  ThirdPageState createState() => ThirdPageState();
 }
 
-class HomeScreenState extends State<HomeScreen> {
+class ThirdPageState extends State<ThirdPage> {
   var demonSlayers;
   bool? isLoading;
 
@@ -30,10 +30,11 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   Future<Map> getSlayersJSON() async {
-    await Future.delayed(const Duration(seconds: 3), () {});
+    //await Future.delayed(const Duration(seconds: 3), () {});
 
     //wala na sa required api sir hehehehe
-    var url = Uri.parse('https://www.demonslayer-api.com/api/v1/combat-styles');
+    var url = Uri.parse(
+        'https://www.demonslayer-api.com/api/v1/combat-styles?page=3');
     var response = await http.get(url);
 
     //successful retrieval
@@ -126,7 +127,6 @@ class HomeScreenState extends State<HomeScreen> {
                               content: Container(
                                 padding: const EdgeInsets.all(15),
                                 child: Column(
-                                  //crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(results[i]['description']),
                                     const SizedBox(
@@ -204,16 +204,16 @@ class HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               width: 130,
             ),
-            SizedBox(
-              height: 40,
-              child: FloatingActionButton(
-                heroTag: 'next',
-                onPressed: () {
-                  Navigator.pushNamed(context, '/secondPage');
-                },
-                child: const Icon(Icons.arrow_forward),
-              ),
-            )
+            // SizedBox(
+            //   height: 40,
+            //   child: FloatingActionButton(
+            //     heroTag: 'next',
+            //     onPressed: () {
+            //       Navigator.pushNamed(context, '/thirdPage');
+            //     },
+            //     child: const Icon(Icons.arrow_forward),
+            //   ),
+            // )
           ],
         ));
   }
